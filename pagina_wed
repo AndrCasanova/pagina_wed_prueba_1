@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura Basada en Componentes - Guía Completa</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            background-color: #eaf2f8;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .advantage {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .disadvantage {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            padding: 15px;
+            border-left: 4px solid #ffd600;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th {
+            background-color: #2c3e50;
+        }
+        
+        .comparison-table td {
+            vertical-align: top;
+        }
+        
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arquitectura Basada en Componentes (ABC)</h1>
+    
+    <div class="note">
+        <p>La <strong>Arquitectura Basada en Componentes</strong> es un paradigma de diseño de software que estructura un sistema como una colección de componentes reutilizables, autocontenidos e independientes que interactúan entre sí a través de interfaces bien definidas.</p>
+    </div>
+    
+    <h2>1. Fundamentos de la Arquitectura Basada en Componentes</h2>
+    
+    <h3>1.1. ¿Qué es un Componente?</h3>
+    <p>Un <strong>componente de software</strong> es una unidad modular, reutilizable y autocontenida que:</p>
+    <ul>
+        <li>Tiene una <strong>interfaz bien definida</strong> (API o contrato)</li>
+        <li><strong>Encapsula</strong> su implementación interna</li>
+        <li>Puede ser <strong>desplegado independientemente</strong></li>
+        <li>Se comunica con otros componentes mediante <strong>mecanismos estandarizados</strong></li>
+    </ul>
+    
+    <h3>1.2. Principios Clave</h3>
+    <ul>
+        <li><strong>Reutilización:</strong> Evitar reinventar la rueda usando componentes existentes</li>
+        <li><strong>Encapsulación:</strong> Ocultar los detalles internos, exponiendo solo lo necesario</li>
+        <li><strong>Acoplamiento débil:</strong> Minimizar dependencias entre componentes</li>
+        <li><strong>Cohesión alta:</strong> Cada componente debe tener una única responsabilidad</li>
+        <li><strong>Interoperabilidad:</strong> Capacidad de integrarse con otros sistemas</li>
+    </ul>
+    
+    <h2>2. Modelos y Estándares de Componentes</h2>
+    
+    <h3>2.1. Modelos Históricos</h3>
+    <table>
+        <tr>
+            <th>Modelo</th>
+            <th>Descripción</th>
+            <th>Ejemplo de Uso</th>
+        </tr>
+        <tr>
+            <td><strong>CORBA</strong> (Common Object Request Broker Architecture)</td>
+            <td>Estándar para componentes distribuidos en múltiples lenguajes</td>
+            <td>Sistemas bancarios legacy</td>
+        </tr>
+        <tr>
+            <td><strong>COM/DCOM</strong> (Component Object Model)</td>
+            <td>Tecnología de Microsoft para componentes en Windows</td>
+            <td>Aplicaciones de escritorio como Office</td>
+        </tr>
+        <tr>
+            <td><strong>EJB</strong> (Enterprise JavaBeans)</td>
+            <td>Componentes de negocio para Java EE</td>
+            <td>Sistemas empresariales en banca</td>
+        </tr>
+        <tr>
+            <td><strong>OSGi</strong></td>
+            <td>Marco modular dinámico para Java</td>
+            <td>Entornos como Eclipse IDE</td>
+        </tr>
+    </table>
+    
+    <h3>2.2. Modelos Modernos</h3>
+    <ul>
+        <li><strong>Web Components</strong> (Custom Elements, Shadow DOM, HTML Templates)</li>
+        <li><strong>Microservicios</strong> (componentes distribuidos independientes)</li>
+        <li><strong>Serverless Components</strong> (AWS Lambda, Azure Functions)</li>
+    </ul>
+    
+    <h2>3. Diseño de Componentes</h2>
+    
+    <h3>3.1. Cómo Diseñar un Buen Componente</h3>
+    <ul>
+        <li><strong>Definir responsabilidades claras</strong> (Principio de Responsabilidad Única - SRP)</li>
+        <li><strong>Establecer contratos estables</strong> (interfaces bien documentadas)</li>
+        <li><strong>Manejar versionado semántico</strong> (v1.0.0 → Mayor.Menor.Parche)</li>
+        <li><strong>Garantizar independencia de despliegue</strong></li>
+    </ul>
+    
+    <h3>3.2. Patrones de Diseño Relacionados</h3>
+    <table>
+        <tr>
+            <th>Patrón</th>
+            <th>Objetivo</th>
+            <th>Ejemplo</th>
+        </tr>
+        <tr>
+            <td><strong>Inyección de Dependencias (DI)</strong></td>
+            <td>Evitar acoplamiento fuerte</td>
+            <td>Uso de Spring en Java</td>
+        </tr>
+        <tr>
+            <td><strong>Fachada (Facade)</strong></td>
+            <td>Simplificar interfaces complejas</td>
+            <td>API Gateway en microservicios</td>
+        </tr>
+        <tr>
+            <td><strong>Mediador (Mediator)</strong></td>
+            <td>Centralizar comunicación entre componentes</td>
+            <td>Event Bus en aplicaciones frontend</td>
+        </tr>
+        <tr>
+            <td><strong>Publicador-Suscriptor (Pub/Sub)</strong></td>
+            <td>Comunicación asíncrona</td>
+            <td>Kafka, RabbitMQ</td>
+        </tr>
+    </table>
+    
+    <h2>4. Implementación y Tecnologías</h2>
+    
+    <h3>4.1. Lenguajes y Frameworks Populares</h3>
+    <table>
+        <tr>
+            <th>Lenguaje/Framework</th>
+            <th>Uso en ABC</th>
+        </tr>
+        <tr>
+            <td><strong>Java + Spring</strong></td>
+            <td>Inyección de dependencias, EJB</td>
+        </tr>
+        <tr>
+            <td><strong>C# + .NET</strong></td>
+            <td>COM+, Dependency Injection en ASP.NET Core</td>
+        </tr>
+        <tr>
+            <td><strong>JavaScript/TypeScript</strong></td>
+            <td>Web Components, React/Angular (componentes UI)</td>
+        </tr>
+        <tr>
+            <td><strong>Python</strong></td>
+            <td>Plugins modulares, Paquetes PIP</td>
+        </tr>
+    </table>
+    
+    <h3>4.2. Herramientas para Gestión de Componentes</h3>
+    <ul>
+        <li><strong>Repositorios de artefactos:</strong> Nexus, Artifactory, npm, Maven Central</li>
+        <li><strong>Gestión de dependencias:</strong> Maven (Java), npm/yarn (JavaScript), pip (Python)</li>
+        <li><strong>Contenedores y orquestación:</strong> Docker, Kubernetes (para componentes distribuidos)</li>
+    </ul>
+    
+    <h2>5. Ventajas y Desafíos</h2>
+    
+    <h3>5.1. Ventajas</h3>
+    <p><span class="advantage">✅ Mayor productividad</span> (menos código desde cero)</p>
+    <p><span class="advantage">✅ Mantenibilidad mejorada</span> (actualizar componentes sin afectar el sistema completo)</p>
+    <p><span class="advantage">✅ Escalabilidad</span> (añadir nuevos componentes fácilmente)</p>
+    <p><span class="advantage">✅ Distribución de trabajo</span> (equipos pueden desarrollar componentes en paralelo)</p>
+    
+    <h3>5.2. Desafíos</h3>
+    <p><span class="disadvantage">❌ Complejidad en integración</span> (gestión de versiones y dependencias)</p>
+    <p><span class="disadvantage">❌ Overhead de comunicación</span> (especialmente en sistemas distribuidos)</p>
+    <p><span class="disadvantage">❌ Dificultad en pruebas</span> (integración entre componentes)</p>
+    <p><span class="disadvantage">❌ Gobernanza</span> (evitar duplicación de componentes)</p>
+    
+    <h2>6. ABC vs. Otros Enfoques Arquitectónicos</h2>
+    
+    <table class="comparison-table">
+        <tr>
+            <th>Criterio</th>
+            <th>ABC</th>
+            <th>Monolito</th>
+            <th>Microservicios</th>
+        </tr>
+        <tr>
+            <td><strong>Reutilización</strong></td>
+            <td>Alta</td>
+            <td>Baja</td>
+            <td>Media</td>
+        </tr>
+        <tr>
+            <td><strong>Escalabilidad</strong></td>
+            <td>Media</td>
+            <td>Baja</td>
+            <td>Alta</td>
+        </tr>
+        <tr>
+            <td><strong>Complejidad</strong></td>
+            <td>Media</td>
+            <td>Baja</td>
+            <td>Alta</td>
+        </tr>
+        <tr>
+            <td><strong>Despliegue</strong></td>
+            <td>Independiente</td>
+            <td>Único</td>
+            <td>Independiente</td>
+        </tr>
+        <tr>
+            <td><strong>Uso típico</strong></td>
+            <td>Sistemas empresariales</td>
+            <td>Apps pequeñas</td>
+            <td>Cloud, sistemas distribuidos</td>
+        </tr>
+    </table>
+    
+    <h2>7. Casos de Éxito y Aplicaciones Reales</h2>
+    <ul>
+        <li><strong>SAP R/3:</strong> ERP modular basado en componentes</li>
+        <li><strong>Eclipse IDE:</strong> Extensible mediante plugins (OSGi)</li>
+        <li><strong>Sistemas de banca:</strong> Componentes reutilizables para transacciones, seguridad, etc.</li>
+        <li><strong>Videojuegos (Unity/Unreal):</strong> Motores modulares con assets y plugins</li>
+    </ul>
+    
+    <h2>8. Tendencias Futuras</h2>
+    <ul>
+        <li><strong>Componentes en la nube</strong> (AWS/Azure Component Models)</li>
+        <li><strong>Low-Code/No-Code</strong> (ensamblaje visual de componentes)</li>
+        <li><strong>IA generativa</strong> para creación automática de componentes</li>
+        <li><strong>WebAssembly (Wasm)</strong> para componentes de alto rendimiento en navegadores</li>
+    </ul>
+    
+    <div class="note">
+        <h3>Conclusión</h3>
+        <p>La <strong>Arquitectura Basada en Componentes</strong> sigue siendo relevante en la era de la nube y los microservicios, promoviendo la reutilización, modularidad y mantenibilidad. Su correcta implementación requiere una gestión adecuada de dependencias, contratos bien definidos y herramientas modernas de integración.</p>
+    </div>
+    
+    <footer>
+        <p>Documentación sobre Arquitectura Basada en Componentes - © 2023</p>
+    </footer>
+</body>
+</html>
